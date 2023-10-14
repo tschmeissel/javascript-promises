@@ -1,5 +1,5 @@
 /**
- * a promise might be create by its constructor or static API methods
+ * a promise might be created by its constructor or static API methods
  * if a promise calls resolve or reject in the executor functions it is thenable
  * await / async are a more elegant way to avoid a then tree
  *
@@ -10,7 +10,7 @@
  * Does await get the same result value the success callback handler gets when used?
  *  yes
  *
- * Woher weiß ich 8n welchem Status sich ein Promis befindet?
+ * Woher weiß ich in welchem Status sich ein Promis befindet?
  *  debuggen
  *
  * Was passiert bei then oder await, wenn kein resolve oder reject Promise ausgeführt wird?
@@ -35,7 +35,7 @@
  * https://medium.com/@ramsunvtech/promises-of-promise-part-1-53f769245a53
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises?retiredLocale=de
  * https://www.promisejs.org/api/
- * 
+ *
  * https://medium.com/@bluepnume/learn-about-promises-before-you-start-using-async-await-eb148164a9c8
  * https://javascript.info/async-await
  * https://www.youtube.com/watch?v=2d7s3spWAzo
@@ -53,7 +53,7 @@ const basicPromiseHandling = () => {
       reject('FAILURE');
     }
   });
-
+  
   function successCallback(result) {
     console.log('success callback handler got: ' + result);
     return result;
@@ -64,17 +64,17 @@ const basicPromiseHandling = () => {
     return error;
   }
 
-  const promise2 = promise.then(successCallback, failureCallback)
+  const promise2 = promise.then(successCallback, failureCallback);
   // same as...
   // const promise2 = promise.then(successCallback).catch(failureCallback);
 
   // promise2 is pending after promise got resolved and holds the value of the call back handler
-  promise2.then(result => {
-    console.log("result 2:", result)
+  promise2.then((result) => {
+    console.log('result 2:', result);
   });
 
   // alternatively use async await
-  /*   (async () => {
+  (async () => {
     try {
       const result = await promise;
       console.log('await got ', result);
@@ -82,10 +82,9 @@ const basicPromiseHandling = () => {
     } catch (error) {
       failureCallback(error);
     }
-  })(); */
+  })();
 };
-
-//basicPromiseHandling();
+basicPromiseHandling();
 
 function resolveAfter2Seconds() {
   return new Promise((resolve) => {
